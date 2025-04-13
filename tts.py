@@ -1,18 +1,18 @@
 """Support for Baidu TTS."""
 import logging
-import asyncio
-from aip import AipSpeech
-import voluptuous as vol
+from typing import Any
 
-from homeassistant.components.tts import Provider, PLATFORM_SCHEMA
-from homeassistant.const import CONF_API_KEY
-import homeassistant.helpers.config_validation as cv
+from aip import AipSpeech
+from homeassistant.components.tts import (
+    TextToSpeechEntity,
+    PLATFORM_SCHEMA,
+)
+from homeassistant.config_entries import ConfigEntry
+from homeassistant.core import HomeAssistant
+from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
 from .const import (
     DOMAIN,
-    CONF_APP_ID,
-    CONF_API_KEY,
-    CONF_SECRET_KEY,
     DEFAULT_SPEED,
     DEFAULT_PITCH,
     DEFAULT_VOLUME,
@@ -24,41 +24,43 @@ _LOGGER = logging.getLogger(__name__)
 SUPPORT_LANGUAGES = ["zh", "en"]
 DEFAULT_LANG = "zh"
 
-PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
-    {
-        vol.Required(CONF_APP_ID): cv.string,
-        vol.Required(CONF_API_KEY): cv.string,
-        vol.Required(CONF_SECRET_KEY): cv.string,
-    }
-)
+async def async_setup_entry(
+    hass: HomeAssistant,
+    config_entry: ConfigEntry,
+    async_add_entities: AddEntitiesCallback,
+) -> bool:
+    """Set up Baidu TTS from a config entry."""
+    async_add_entities([BaiduTTSEntity(hass, config_entry)])
+    return True
 
-async def async_get_engine(hass, config, discovery_info=None):
-    """Set up Baidu TTS component."""
-    return BaiduTTSProvider(hass)
+class BaiduTTSEntity(TextToSpeechEntity):
+    """Baidu TTS Entity."""
 
-class BaiduTTSProvider(Provider):
-    """Baidu TTS api provider."""
-
-    def __init__(self, hass):
-        """Initialize Baidu TTS provider."""
+    def __init__(self, hass: HomeAssistant, config_entry: ConfigEntry) -> None:
+        """Initialize Baidu TTS entity."""
         self.hass = hass
-        self._app_id = hass.data[DOMAIN][CONF_APP_ID]
-        self._api_key = hass.data[DOMAIN][CONF_API_KEY]
-        self._secret_key = hass.data[DOMAIN][CONF_SECRET_KEY]
-        self._client = AipSpeech(self._app_id, self._api_key, self._secret_key)
-        self.name = "Baidu TTS"
+        self._config_entry = config_entry
+        self._attr_name = "Baidu TTS"
+        self._attr_unique_id = f"{DOMAIN}_tts"
+        
+        # 初始化百度语音合成客户端
+        self._client = AipSpeech(
+            config_entry.data["app_id"],
+            config_entry.data["api_key"],
+            config_entry.data["secret_key"]
+        )
 
     @property
-    def default_language(self):
+    def default_language(self) -> str:
         """Return the default language."""
         return DEFAULT_LANG
 
     @property
-    def supported_languages(self):
+    def supported_languages(self) -> list[str]:
         """Return list of supported languages."""
         return SUPPORT_LANGUAGES
 
-    async def async_get_tts_audio(self, message, language, options=None):
+    async def async_get_tts_audio(self, message: str, language: str, options: dict = None) -> tuple[str, bytes]:
         """Load TTS from Baidu."""
         options = options or {}
         speed = options.get("speed", DEFAULT_SPEED)
@@ -66,8 +68,9 @@ class BaiduTTSProvider(Provider):
         volume = options.get("volume", DEFAULT_VOLUME)
         person = options.get("person", DEFAULT_PERSON)
 
-        def _get_tts():
-            result = self._client.synthesis(
+        try:
+            result = await self.hass.async_add_executor_job(
+                self._client.synthesis,
                 message,
                 language,
                 1,  # 1: mp3
@@ -76,16 +79,15 @@ class BaiduTTSProvider(Provider):
                     "pit": pitch,
                     "vol": volume,
                     "per": person,
-                },
+                }
             )
+            
             if isinstance(result, dict):
                 _LOGGER.error("Baidu TTS error: %s", result)
                 return None, None
+                
             return "mp3", result
-
-        try:
-            audio_type, audio_data = await self.hass.async_add_executor_job(_get_tts)
-            return audio_type, audio_data
+            
         except Exception as ex:
             _LOGGER.error("Error during Baidu TTS: %s", ex)
             return None, None 

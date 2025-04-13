@@ -1,0 +1,12 @@
+{
+  "domain": "baidu_voice",
+  "name": "Baidu Voice",
+  "documentation": "https://github.com/howelljiang/baidu_voice",
+  "dependencies": [],
+  "codeowners": ["@howelljiang"],
+  "requirements": ["baidu-aip>=4.16.10"],
+  "version": "0.1.0",
+  "iot_class": "cloud_push",
+  "config_flow": true,
+  "platforms": ["tts", "stt"]
+} 

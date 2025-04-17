@@ -1,0 +1,18 @@
+# 音频文件
+*.pcm
+*.mp3
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# 环境文件
+.env
+.venv
+env/
+venv/
+
+# IDE
+.idea/
+.vscode/

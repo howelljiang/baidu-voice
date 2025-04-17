@@ -1,0 +1,6 @@
+{
+    "name": "Baidu Voice",
+    "render_readme": true,
+    "domains": ["tts", "stt"],
+    "homeassistant": "2023.8.0"
+  }

@@ -1,0 +1,58 @@
+{
+    "config": {
+        "abort": {
+            "already_configured": "服务已经配置"
+        },
+        "error": {
+            "cannot_connect": "连接失败",
+            "invalid_auth": "验证无效",
+            "unknown": "未知错误",
+            "auth": "认证失败",
+            "test_success": "连接测试成功"
+        },
+        "step": {
+            "user": {
+                "title": "设置百度语音",
+                "description": "请输入百度语音API凭据和TTS设置",
+                "data": {
+                    "app_id": "应用ID",
+                    "api_key": "API密钥",
+                    "secret_key": "密钥",
+                    "language": "TTS语言",
+                    "stt_language": "STT语言",
+                    "volume": "音量 (0-15)",
+                    "speed": "语速 (0-9)",
+                    "pitch": "音调 (0-9)",
+                    "voice": "发音人",
+                    "fileformat": "音频格式",
+                    "test_connection": "测试连接"
+                }
+            }
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "title": "更新百度语音设置",
+                "description": "修改百度语音设置",
+                "data": {
+                    "app_id": "应用ID",
+                    "api_key": "API密钥",
+                    "secret_key": "密钥",
+                    "language": "TTS语言",
+                    "stt_language": "STT语言",
+                    "volume": "音量 (0-15)",
+                    "speed": "语速 (0-9)",
+                    "pitch": "音调 (0-9)",
+                    "voice": "发音人",
+                    "fileformat": "音频格式",
+                    "test_connection": "测试连接"
+                }
+            }
+        },
+        "error": {
+            "auth": "认证失败",
+            "test_success": "连接测试成功"
+        }
+    }
+}

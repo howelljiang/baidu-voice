@@ -1,0 +1,17 @@
+{
+  "domain": "baidu_voice",
+  "name": "Baidu Voice",
+  "codeowners": [
+    "@howelljiang"
+  ],
+  "config_flow": true,
+  "dependencies": [],
+  "documentation": "https://github.com/howelljiang/baidu-voice",
+  "iot_class": "cloud_push",
+  "quality_scale": "bronze",
+  "requirements": [
+    "baidu-aip == 4.16.10", "chardet==5.2.0"
+  ],
+  "version": "0.0.1",
+  "issue_tracker": "https://github.com/howelljiang/baidu-voice/issues"
+}

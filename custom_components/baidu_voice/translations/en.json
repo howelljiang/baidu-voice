@@ -1,0 +1,58 @@
+{
+    "config": {
+        "abort": {
+            "already_configured": "Service is already configured"
+        },
+        "error": {
+            "cannot_connect": "Failed to connect",
+            "invalid_auth": "Invalid authentication",
+            "unknown": "Unexpected error",
+            "auth": "Authentication failed",
+            "test_success": "Connection test successful"
+        },
+        "step": {
+            "user": {
+                "title": "Setup Baidu Voice",
+                "description": "Please enter your Baidu Voice API credentials and TTS settings",
+                "data": {
+                    "app_id": "App ID",
+                    "api_key": "API Key",
+                    "secret_key": "Secret Key",
+                    "language": "TTS Language",
+                    "stt_language": "STT Language",
+                    "volume": "Volume (0-15)",
+                    "speed": "Speed (0-9)",
+                    "pitch": "Pitch (0-9)",
+                    "voice": "Voice",
+                    "fileformat": "Audio Format",
+                    "test_connection": "Test Connection"
+                }
+            }
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "title": "Update Baidu Voice Settings",
+                "description": "Modify Baidu Voice settings",
+                "data": {
+                    "app_id": "App ID",
+                    "api_key": "API Key",
+                    "secret_key": "Secret Key",
+                    "language": "TTS Language",
+                    "stt_language": "STT Language",
+                    "volume": "Volume (0-15)",
+                    "speed": "Speed (0-9)",
+                    "pitch": "Pitch (0-9)",
+                    "voice": "Voice",
+                    "fileformat": "Audio Format",
+                    "test_connection": "Test Connection"
+                }
+            }
+        },
+        "error": {
+            "auth": "Authentication failed",
+            "test_success": "Connection test successful"
+        }
+    }
+}

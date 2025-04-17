@@ -10,7 +10,8 @@
    - 短文本在线合成服务
    - 其它的语音库根据需求自行开通
 ## 安装方式
-   将baidu_voice目录复制到HomeAssistant的config/custom_components目录下，重新启动HomeAssistant即可。
+   - 手动安装：将baidu_voice目录复制到HomeAssistant的config/custom_components目录下，重新启动HomeAssistant即可。
+   - HACS安装：将本仓库地址添加到HACS自定义仓库地址中，然后在HACS中点击Download下载安装。
 ## 配置步骤
 
 1. 在百度云控制台创建应用并获取 APP ID、API Key 和 Secret Key
@@ -31,7 +32,7 @@
 
 - 本集成需要互联网连接
 - 使用百度语音服务可能会产生费用，请参考百度云官方计费标准
-
+- 未大量测试验证，有问题请发issues。
 
 
 

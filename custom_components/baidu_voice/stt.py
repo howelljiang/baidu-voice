@@ -130,7 +130,7 @@ class BaiduSTTEntity(stt.SpeechToTextEntity):
             if "result" not in result or not result["result"]:
                 return stt.SpeechResult(
                     text=None,
-                    result=stt.SpeechResultState.NO_SPEECH_DETECTED,
+                    result=stt.SpeechResultState.SUCCESS,
                 )
 
             return stt.SpeechResult(

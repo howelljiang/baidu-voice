@@ -52,6 +52,7 @@ class BaiduTTSEntity(TextToSpeechEntity):
     def __init__(self, hass: HomeAssistant, config_entry: ConfigEntry) -> None:
         """Initialize the Baidu TTS entity."""
 
+        self._config_entry = config_entry
         # Generate unique ID and set name
         app_id = config_entry.data[CONF_APP_ID]
         self._attr_unique_id = f"baidu_tts_{app_id}"

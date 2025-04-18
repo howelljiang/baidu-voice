@@ -27,12 +27,8 @@
                     "fileformat": "Audio Format",
                     "test_connection": "Test Connection"
                 }
-            }
-        }
-    },
-    "options": {
-        "step": {
-            "init": {
+            },
+            "reconfigure": {
                 "title": "Update Baidu Voice Settings",
                 "description": "Modify Baidu Voice settings",
                 "data": {
@@ -49,10 +45,6 @@
                     "test_connection": "Test Connection"
                 }
             }
-        },
-        "error": {
-            "auth": "Authentication failed",
-            "test_success": "Connection test successful"
         }
     }
 }

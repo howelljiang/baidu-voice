@@ -12,6 +12,5 @@
   "requirements": [
     "baidu-aip == 4.16.10", "chardet==5.2.0"
   ],
-  "version": "0.0.1",
-  "issue_tracker": "https://github.com/howelljiang/baidu-voice/issues"
+  "version": "0.0.1"
 }

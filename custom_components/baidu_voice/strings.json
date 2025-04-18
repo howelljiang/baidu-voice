@@ -2,20 +2,57 @@
   "config": {
     "step": {
       "user": {
+        "title": "[%key:common::config_flow::title::setup%] Baidu Voice",
+        "description": "[%key:common::config_flow::description::enter_credentials%]",
         "data": {
-          "host": "[%key:common::config_flow::data::host%]",
-          "username": "[%key:common::config_flow::data::username%]",
-          "password": "[%key:common::config_flow::data::password%]"
+          "app_id": "[%key:common::config_flow::data::app_id%]",
+          "api_key": "[%key:common::config_flow::data::api_key%]",
+          "secret_key": "[%key:common::config_flow::data::secret_key%]",
+          "language": "[%key:common::config_flow::data::language%]",
+          "stt_language": "[%key:common::config_flow::data::stt_language%]",
+          "volume": "[%key:common::config_flow::data::volume%]",
+          "speed": "[%key:common::config_flow::data::speed%]",
+          "pitch": "[%key:common::config_flow::data::pitch%]",
+          "voice": "[%key:common::config_flow::data::voice%]",
+          "fileformat": "[%key:common::config_flow::data::fileformat%]",
+          "test_connection": "[%key:common::config_flow::data::test_connection%]"
         }
       }
     },
     "error": {
       "cannot_connect": "[%key:common::config_flow::error::cannot_connect%]",
       "invalid_auth": "[%key:common::config_flow::error::invalid_auth%]",
-      "unknown": "[%key:common::config_flow::error::unknown%]"
+      "unknown": "[%key:common::config_flow::error::unknown%]",
+      "auth": "[%key:common::config_flow::error::auth%]",
+      "test_success": "[%key:common::config_flow::error::test_success%]"
     },
     "abort": {
       "already_configured": "[%key:common::config_flow::abort::already_configured_device%]"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "[%key:common::config_flow::options::title%]",
+        "description": "[%key:common::config_flow::options::description%]",
+        "data": {
+          "app_id": "[%key:common::config_flow::data::app_id%]",
+          "api_key": "[%key:common::config_flow::data::api_key%]",
+          "secret_key": "[%key:common::config_flow::data::secret_key%]",
+          "language": "[%key:common::config_flow::data::language%]",
+          "stt_language": "[%key:common::config_flow::data::stt_language%]",
+          "volume": "[%key:common::config_flow::data::volume%]",
+          "speed": "[%key:common::config_flow::data::speed%]",
+          "pitch": "[%key:common::config_flow::data::pitch%]",
+          "voice": "[%key:common::config_flow::data::voice%]",
+          "fileformat": "[%key:common::config_flow::data::fileformat%]",
+          "test_connection": "[%key:common::config_flow::data::test_connection%]"
+        }
+      }
+    },
+    "error": {
+      "auth": "[%key:common::config_flow::error::auth%]",
+      "test_success": "[%key:common::config_flow::error::test_success%]"
     }
   }
 }

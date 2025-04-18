@@ -27,12 +27,8 @@
                     "fileformat": "音频格式",
                     "test_connection": "测试连接"
                 }
-            }
-        }
-    },
-    "options": {
-        "step": {
-            "init": {
+            },
+            "reconfigure": {
                 "title": "更新百度语音设置",
                 "description": "修改百度语音设置",
                 "data": {
@@ -49,10 +45,6 @@
                     "test_connection": "测试连接"
                 }
             }
-        },
-        "error": {
-            "auth": "认证失败",
-            "test_success": "连接测试成功"
         }
     }
 }

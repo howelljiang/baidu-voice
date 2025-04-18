@@ -48,7 +48,6 @@ class BaiduSTTEntity(stt.SpeechToTextEntity):
 
     def __init__(self, hass: HomeAssistant, config: dict[str, Any]) -> None:
         """Initialize Baidu speech-to-text entity."""
-        super().__init__()
         self.hass = hass
         self._config = config
         self._client = AipSpeech(
@@ -62,7 +61,7 @@ class BaiduSTTEntity(stt.SpeechToTextEntity):
     @property
     def supported_languages(self) -> list[str]:
         """Return list of supported languages."""
-        return ["zh-CN", "en-US", "yue-CN", "sichuan-CN"]
+        return ["zh-CN", "en-US", "zh-HK", "zh-TW"]
 
     @property
     def supported_formats(self) -> list[str]:
@@ -118,7 +117,7 @@ class BaiduSTTEntity(stt.SpeechToTextEntity):
                 )
 
             if "err_no" in result and result["err_no"] != 0:
-                _LOGGER.debug(
+                _LOGGER.error(
                     "Error from Baidu API: %s - %s",
                     result.get("err_msg", "Unknown error"),
                     result.get("err_detail", "No details"),
@@ -139,7 +138,7 @@ class BaiduSTTEntity(stt.SpeechToTextEntity):
                 result=stt.SpeechResultState.SUCCESS,
             )
 
-        except Exception:  # pylint: disable=broad-except
+        except Exception:
             _LOGGER.exception("Error processing Baidu STT")
             return stt.SpeechResult(
                 text=None,

@@ -3,7 +3,7 @@
 from typing import Final
 
 DOMAIN: Final = "baidu_voice"
-
+ENDPOINT: Final = "http://vop.baidu.com/server_api"
 # 配置项
 CONF_APP_ID: Final = "app_id"
 CONF_API_KEY: Final = "api_key"
